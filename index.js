@@ -37,6 +37,6 @@ async function sendToFirebase() {
 }
 
 // Start loop (every 2 seconds)
-setInterval(sendToFirebase, 2000);
+setInterval(sendToFirebase, 10000);
 
 console.log("🚀 Mock ESP Server started — sending data to Firebase every 2s...");
