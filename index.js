@@ -17,11 +17,20 @@ function generateData() {
   const voltage = 220 + (Math.random() * 10 - 5); // 215–225 V
   const current = 0.5 + Math.random() * 5;        // 0.5–5.5 A
   const power = voltage * current;
+
+  // Get current time and add 5 hours 30 minutes
+  const now = new Date();
+  const offsetMs = 5.5 * 60 * 60 * 1000; // +5:30 in milliseconds
+  const localTime = new Date(now.getTime() + offsetMs);
+
+  // Format as ISO-like string with +05:30 offset
+  const isoStringWithOffset = localTime.toISOString().replace('Z', '+05:30');
+
   return {
     voltage: parseFloat(voltage.toFixed(2)),
     current: parseFloat(current.toFixed(2)),
     power: parseFloat(power.toFixed(2)),
-    timestamp: new Date().toISOString()
+    timestamp: isoStringWithOffset
   };
 }
 
